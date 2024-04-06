@@ -27,4 +27,24 @@ router.get('/attendees/:id', (req, res) => {
     );
 });
 
+router.post('/attendees', (req, res) => {
+    const { firstname, lastname, linkedin, role} = req.body;
+    console.log(req.body.firstname)
+    console.log(`${firstname} ${lastname}`)
+    const stmt = db.prepare('INSERT INTO attendees VALUES (?, ?, ?, ?)');
+    try {
+        stmt.run([firstname, lastname, linkedin, role]);
+        stmt.finalize();
+        res.status(201).json({
+            firstname,
+            lastname,
+            linkedin,
+            role
+        });
+    } catch (error) {
+        res.status(500).send();
+    }
+
+})
+
 export default router;

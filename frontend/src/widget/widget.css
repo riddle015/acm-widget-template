@@ -1,1 +1,18 @@
 /* Put your CSS styles here. */
+.form-class {
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: start;
+  text-align: right;
+  gap: 1em;
+  padding: 1em;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+button {
+  width: 100px;
+}
